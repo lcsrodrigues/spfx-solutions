@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "propriedades-usuario-client-side-solution",
+    "id": "7c98a6bd-d8b7-4491-8810-a06858e60f77",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": false,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/propriedades-usuario.sppkg"
+  }
+}

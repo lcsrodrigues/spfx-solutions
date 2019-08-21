@@ -1,0 +1,14 @@
+ul#user-properties{ list-style-type:none; overflow:hidden; width:100%; padding: 0;}
+
+ul#user-properties .loading img{ width:72x; height:72px; }
+
+ul#user-properties li.card-user { width: 100%; margin: 1.25% 0; overflow: hidden; background: darkgrey; }
+ul#user-properties li.card-user .header-user{ overflow: hidden; }
+ul#user-properties li.card-user .header-user div.properties-user{ float: left; width: 86%; margin: 1%; }
+ul#user-properties li.card-user .header-user div.properties-user span{ display:inline-block; }	
+ul#user-properties li.card-user .header-user div.imagem-user { width: 10%; float: left; margin: 1%; }
+ul#user-properties li.card-user .header-user div.imagem-user img{ width:72px; height: 72px; }
+
+ul#user-properties li.card-user div.body-user{ width: 276px; background: #d1d1d1; position: absolute; display:none;}
+ul#user-properties li.card-user div.body-user ul{ padding: 0; }
+ul#user-properties li.card-user div.body-user ul span{ margin:5px; }
