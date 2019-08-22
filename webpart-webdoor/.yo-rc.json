@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.8.2",
+    "libraryName": "webpart-webdoor",
+    "libraryId": "e7bc1e01-9bf9-47d5-a8b2-775c34043eb7",
+    "environment": "spo",
+    "packageManager": "npm",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

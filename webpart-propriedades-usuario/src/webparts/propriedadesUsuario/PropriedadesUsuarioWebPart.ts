@@ -6,7 +6,6 @@ import {
 } from '@microsoft/sp-property-pane';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './PropriedadesUsuarioWebPart.module.scss';
 import * as strings from 'PropriedadesUsuarioWebPartStrings';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
@@ -21,7 +20,8 @@ export default class PropriedadesUsuarioWebPart extends BaseClientSideWebPart<IP
   
   protected onInit():Promise<void>{
     
-    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/SiteAssets/css/style.css');
+    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/siteAssets/css/webpart-style.css');
+    SPComponentLoader.loadScript(this.context.pageContext.site.absoluteUrl+'/siteAssets/js/webpart-script.js');
     
     return super.onInit();
   }
@@ -29,8 +29,7 @@ export default class PropriedadesUsuarioWebPart extends BaseClientSideWebPart<IP
   public render(): void {
     var self = this;
     this.domElement.innerHTML = `
-    <div>
-      <h1>Propriedades do usuário</h1>
+    <div class='webpart-propriedades-usuario'>
       <ul id="user-properties">
       </ul>
     </div>`;
@@ -127,17 +126,17 @@ export default class PropriedadesUsuarioWebPart extends BaseClientSideWebPart<IP
             strOut+="	<li class='card-user'>";
             strOut+="		<div class='header-user'>";
             strOut+="			<div class='properties-user'>";
-            strOut+="				<span>"+nameUser+"</span><br/>";
-            strOut+="				<span>"+emailUser+"</span><br/>";
-            strOut+="				<span>"+birthdayUser+"</span><br/>";
+            strOut+="				<span class='name-user'>"+nameUser+"</span><br/>";
+            strOut+="				<span class='birthday-user'>"+birthdayUser+"</span><br/>";
             strOut+="			</div>";
             strOut+="			<div class='imagem-user'>";
             strOut+="				<img src='"+pictureUser+"' />";
             strOut+="			</div>";
             strOut+="		</div>";
             strOut+="		<div class='body-user'>";
-            strOut+="			<span><a href='"+oneDriveUser+"' target='_blank'>OneDrive</a></span><br/>";
-            strOut+="			<span>Departamento: "+departamentUser+"</span>";
+            strOut+="			<span class='onedrive-user'><a href='"+oneDriveUser+"' target='_blank'>OneDrive</a></span><br/>";
+            strOut+="			<span class='email-user'>"+emailUser+"</span><br/>";
+            strOut+="			<span class='departament-user'>Departamento: "+departamentUser+"</span>";
             
             if(arrayGroupsUser.length)
             {

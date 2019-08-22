@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "webdoor-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/webdoor/WebdoorWebPart.js",
+          "manifest": "./src/webparts/webdoor/WebdoorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery":{
+      "path":"https://code.jquery.com/jquery-2.2.0.min.js",
+      "globalName": "jquery"
+    }
+  },
+  "localizedResources": {
+    "WebdoorWebPartStrings": "lib/webparts/webdoor/loc/{locale}.js"
+  }
+}
