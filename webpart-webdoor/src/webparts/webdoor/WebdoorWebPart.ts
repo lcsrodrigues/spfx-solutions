@@ -10,7 +10,8 @@ import * as strings from 'WebdoorWebPartStrings';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import * as $ from 'jquery';
-import 'slick-carousel';
+require('../../../node_modules/bxslider/dist/jquery.bxslider.css');
+require('../../../node_modules/bxslider/dist/jquery.bxslider.js');
 
 export interface IWebdoorWebPartProps {
   description: string;
@@ -20,17 +21,9 @@ export default class WebdoorWebPart extends BaseClientSideWebPart<IWebdoorWebPar
 
   protected onInit():Promise<void>{
     
-    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick.css');
-    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick-theme.css');
     SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/siteAssets/css/webpart-style.css');
-    
     SPComponentLoader.loadScript(this.context.pageContext.site.absoluteUrl+'/siteAssets/js/webpart-script.js');
-
-//https://devrodrigues.sharepoint.com/sites/meu-portal/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick.css
-//    <link rel="stylesheet" type="text/css" href="siteAssets/js/slick-1.8.1/slick/slick.css"/>
-//		<link rel="stylesheet" type="text/css" href="siteAssets/js/slick-1.8.1/slick/slick-theme.css"/>		
-//    <script type="text/javascript" src="siteAssets/js/slick-1.8.1/slick/slick.js"></script>
-
+    
     return super.onInit();
   }
 
@@ -38,8 +31,8 @@ export default class WebdoorWebPart extends BaseClientSideWebPart<IWebdoorWebPar
     var self = this;
     self.domElement.innerHTML = `
       <div class='webpart-webdoor'>
-        <section id='target-webdoor'>
-        </div>
+        <ul id='target-webdoor'>
+        </ul>
       </div>`;
 
       self.chargeCarousel();
@@ -67,23 +60,21 @@ export default class WebdoorWebPart extends BaseClientSideWebPart<IWebdoorWebPar
           
           for(var I=0; I<results.length; I++)
           {
-            strOut +="<div class='card-webdoor' itemID='"+results[I].ID+"'>";
+            strOut +="<li class='card-webdoor' itemID='"+results[I].ID+"'>";
             strOut +="  <img src='"+results[I].imagem.Url+"'>";
             strOut +="  <span>"+results[I].Title+"</span>";
-            strOut +="</div>";
+            strOut +="</li>";
           }
           
           target.html(strOut);
-          target.slick({
-            dots: false,
-            infinite: true,
-            speed: 1000,
-            autoplay:true,
-            autoplaySpeed:3000,
-            fade: true,
-            cssEase: 'linear',
-            pauseOnHover:true
-          });
+          target.bxSlider(
+            {
+              auto: true,
+              autoControls: false,
+              stopAutoOnClick: true,
+              pager: true
+            }
+          );
         }
       },
       error:function(err)

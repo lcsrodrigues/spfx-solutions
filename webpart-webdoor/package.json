@@ -18,8 +18,8 @@
     "@microsoft/sp-webpart-base": "1.8.2",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
-    "jquery": "^2.2.0",
-    "slick-carousel": "^1.8.1"
+    "bxslider": "^4.2.14",
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.8.2",
