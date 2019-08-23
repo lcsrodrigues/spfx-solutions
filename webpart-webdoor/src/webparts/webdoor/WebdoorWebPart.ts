@@ -20,8 +20,17 @@ export default class WebdoorWebPart extends BaseClientSideWebPart<IWebdoorWebPar
 
   protected onInit():Promise<void>{
     
+    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick.css');
+    SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick-theme.css');
     SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl+'/siteAssets/css/webpart-style.css');
+    
     SPComponentLoader.loadScript(this.context.pageContext.site.absoluteUrl+'/siteAssets/js/webpart-script.js');
+
+//https://devrodrigues.sharepoint.com/sites/meu-portal/_catalogs/masterpage/siteAssets/js/slick-1.8.1/slick/slick.css
+//    <link rel="stylesheet" type="text/css" href="siteAssets/js/slick-1.8.1/slick/slick.css"/>
+//		<link rel="stylesheet" type="text/css" href="siteAssets/js/slick-1.8.1/slick/slick-theme.css"/>		
+//    <script type="text/javascript" src="siteAssets/js/slick-1.8.1/slick/slick.js"></script>
+
     return super.onInit();
   }
 
@@ -65,6 +74,16 @@ export default class WebdoorWebPart extends BaseClientSideWebPart<IWebdoorWebPar
           }
           
           target.html(strOut);
+          target.slick({
+            dots: false,
+            infinite: true,
+            speed: 1000,
+            autoplay:true,
+            autoplaySpeed:3000,
+            fade: true,
+            cssEase: 'linear',
+            pauseOnHover:true
+          });
         }
       },
       error:function(err)
